@@ -1,0 +1,61 @@
+[��������]  2024��6��8��
+#!/bin/bash
+
+yum install httpd -y
+service httpd start
+chkconfig httpd on
+
+aws s3 cp s3://s3otter35-as-demo/index.html /var/www/html --region ap-northeast-2
+
+
+
+[��������]  2024��6��8��
+#!/bin/bash
+
+INSTANCE_ID=$(curl -s http://169.254.169.254/latest/meta-data/instance-id) # �ڽ��� �ν��Ͻ� ID ���ڰ��� ������ ����
+yum  install httpd -y # ����ġ ���� ��ġ
+echo ""$INSTANCE_ID"" >> /var/www/html/index.html # #INSTANCE_ID �������� html�� �̾��
+service httpd start # ����ġ ����
+
+
+
+[��������] 2024��6��8��
+#!/bin/bash
+
+yes|sudo apt update
+yes|sudo apt install apache2
+echo "<h1>Server Details</h1><p><strong>Hostname:</strong> $(hostname)
+</p><p><strong>IP Address:</strong> $(hostname -l|cut -d" "-f1)</P>" > /var/www/html/index.html
+sudo systemctl restart apache2
+
+
+
+[��������]  2024��6��8��
+#!/bin/bash
+
+yum install httpd -y
+service httpd start
+chkconfig httpd on
+
+yum install -y php
+
+vi /var/www/html/index.php
+
+<?php
+print($_SERVER['SERVER_ADDR']);
+?>
+
+
+[��������]  2024��6��8��
+
+#apache, php ��ġ
+sudo apt update; 
+sudo apt install apache2 php; 
+sudo service apache2 restart; 
+/var/www/html/�� loadtest.php ��ġ
+
+<?php
+$time = microtime(true);
+password_hash('Hello',CRYPT_BLOWFISH,array("cost"=>empty($_GET['cost']) ? 14 : (int)$_GET['cost']));
+echo $_SERVER['SERVER_ADDR'].' : '.(microtime(true) - $time);
+?>
