@@ -50,12 +50,24 @@ print($_SERVER['SERVER_ADDR']);
 
 #apache, php ��ġ
 sudo apt update; 
-sudo apt install apache2 php; 
-sudo service apache2 restart; 
-/var/www/html/�� loadtest.php ��ġ
+sudo apt install apache2 php && sudo service apache2 restart && 
+sudo vi /var/www/html/index.php
 
 <?php
 $time = microtime(true);
 password_hash('Hello',CRYPT_BLOWFISH,array("cost"=>empty($_GET['cost']) ? 14 : (int)$_GET['cost']));
 echo $_SERVER['SERVER_ADDR'].' : '.(microtime(true) - $time);
 ?>
+
+***** 부하 테스트 툴 ****
+- Apache workbench
+- Apache jMeter with Java
+
+**** 부하 모니터링 **** 
+- https://docs.whatap.io/
+
+*** 부하 테스트 요건 ***
+- 롤링 업데이트
+- 스케일 업, 다운
+- 롤백
+- 배포(argoCD)

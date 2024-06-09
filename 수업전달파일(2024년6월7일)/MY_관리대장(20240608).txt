@@ -48,6 +48,8 @@
 09. 10.240.1.13 (VEC-DEV-VPC-Tomcat-2a)      <========> 10.250.2.13 (VEC-PRD-VPC-Tomcat-2a)  성공
 10. 10.240.2.13 (VEC-DEV-VPC-Webserver-2a)   <========> 10.250.2.13 (VEC-PRD-VPC-Tomcat-2a)  실패 왜?
 11. ELB Security Name : VEC-NGINX-CLB-SG  (80,443)
-12. Target Group      : VEC-NGINX-CLB-TG 
+12. Target Group      : VEC-NGINX-ALB-TG 
 13. ELB Name          : VEC-PRD-ALB
+14. auto scalling Name : VEC-PRD-NGINX-AUTO
+15. EC2 launch templates Name : VEC-PRD-NGINX-TEMP
    
